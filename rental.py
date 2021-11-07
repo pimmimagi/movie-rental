@@ -1,5 +1,8 @@
+from movie import Movie
+
+
 class Rental:
-	"""
+    """
 	A rental of a movie by customer.
 	From Fowler's refactoring example.
 
@@ -9,16 +12,22 @@ class Rental:
 	But for simplicity of the example only a days_rented
 	field is used.
 	"""
-	
-	def __init__(self, movie, days_rented): 
-		"""Initialize a new movie rental object for
+
+    def __init__(self, movie, days_rented):
+        """Initialize a new movie rental object for
 		   a movie with known rental period (daysRented).
 		"""
-		self.movie = movie
-		self.days_rented = days_rented
+        self.movie = movie
+        self.days_rented = days_rented
 
-	def get_movie(self):
-		return self.movie
+    def get_movie(self):
+        return self.movie
 
-	def get_days_rented(self):
-		return self.days_rented
+    def get_days_rented(self):
+        return self.days_rented
+
+    def get_price(self):
+        return self.movie.get_price_code().price(self.get_days_rented())
+
+    def get_frp(self):
+        return self.movie.get_price_code().frp(self.get_days_rented())
